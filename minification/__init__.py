@@ -19,12 +19,12 @@ def minify(pelican):
     :param pelican: the pelican object
     :type pelican: pelican.Pelican
     """
-    print type(pelican)
     for path, subdirs, files in os.walk(pelican.output_path):
         for name in files:
+            path_file = os.path.join(path, name)
+
             # minify HTML using htmlmin
             if fnmatch(name, '*.html'):
-                path_file = os.path.join(path, name)
                 try:
                     with open(path_file, 'r+', encoding='utf-8') as f:
                         content = htmlmin.minify(
