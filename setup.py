@@ -37,8 +37,9 @@ setup(
         'minification',
     ],
     requires=[
-        'Pelican',
+        'csscompressor>=0.9.1',
         'htmlmin>=0.1.5',
+        'Pelican',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
