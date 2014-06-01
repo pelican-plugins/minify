@@ -36,7 +36,7 @@ setup(
     packages=[
         'minification',
     ],
-    requires=[
+    install_requires=[
         'csscompressor>=0.9.1',
         'htmlmin>=0.1.5',
         'Pelican',
@@ -49,6 +49,7 @@ setup(
         'Natural Language :: English',
         'Operating System :: POSIX :: Linux',
         'Programming Language :: Python',
-        'Topic :: Text Processing :: Markup'
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Text Processing :: Markup',
     ]
 )
