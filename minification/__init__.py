@@ -10,7 +10,7 @@ from fnmatch import fnmatch
 from pelican import signals
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 class Minification(object):
@@ -36,6 +36,7 @@ class Minification(object):
                             remove_empty_space=True,
                             reduce_boolean_attributes=True,
                             keep_pre=True,
+                            remove_optional_attribute_quotes=False,
                         )
                     )
                 elif fnmatch(name, '*.css'):
