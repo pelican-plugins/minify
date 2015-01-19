@@ -10,9 +10,6 @@ from fnmatch import fnmatch
 from pelican import signals
 
 
-__version__ = '0.1.1'
-
-
 class Minification(object):
     """
     Class that does file content minification.
