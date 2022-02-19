@@ -1,6 +1,8 @@
 pelican-minification
 ====================
 
+**Note that the plugin name changed to `pelican.plugins.minification` with version 1.0.0!**
+
 Content minification for the `Pelican`_ site generator.
 This plugin can compress HTML & CSS files as well as inline CSS and JavaScript in HTML files.
 
@@ -48,9 +50,16 @@ To configure the behavior of the plugin, add the following variables in your *pe
 
 Please note that ``INLINE_CSS_MIN`` and ``INLINE_JS_MIN`` require ``HTML_MIN`` be enabled.
 
+Contributors
+------------
+* `darignac`_ (original code)
+* `ysard`_ (refactoring 2022)
+
 
 .. _htmlmin: https://pypi.python.org/pypi/htmlmin
 .. _csscompressor: https://pypi.python.org/pypi/csscompressor
 .. _jsmin: https://pypi.org/project/jsmin
 .. _BeautifulSoup: https://pypi.org/project/beautifulsoup4
 .. _Pelican: https://pypi.python.org/pypi/pelican
+.. _darignac: https://github.com/darignac
+.. _ysard: https://github.com/ysard
