@@ -1,7 +1,7 @@
 pelican-minification
 ====================
 
-**Note that the plugin name changed to `pelican.plugins.minification` with version 1.0.0!**
+**Note that the plugin name changed to ``pelican.plugins.minification`` with version 1.0.0!**
 
 Content minification for the `Pelican`_ site generator.
 This plugin can compress HTML & CSS files as well as inline CSS and JavaScript in HTML files.
