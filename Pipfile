@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[requires]
+python_version = "3.9"
+
+[packages]
+beautifulsoup4 = "*"
+csscompressor = ">=0.9.5"
+htmlmin = ">=0.1.12"
+jsmin = ">=3.0.1"
+packaging = "*"
+pelican = ">=4"
+
+[dev-packages]
+pytest-runner = "*"
+pytest = ">=5.2.0"
+pytest-cov = ">=2.6.1"
+flake8 = "<4"
+"zest.releaser" = "*"
+wheel = "*"
+check-manifest = "*"
+chardet = "*"
+readme = "*"
+
+[dev-packages.prospector]
+extras = [ "with-pyroma",]
