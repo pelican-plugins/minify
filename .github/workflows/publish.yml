@@ -1,7 +1,9 @@
 name: Create package and upload on tag
 
 on:
-  push
+  push:
+    tags:
+      - v*
 
 jobs:
   package-and-deploy:
