@@ -8,7 +8,7 @@ check_setups:
 
 check_code:
 	prospector pelican/plugins/minification/
-	check-manifest
+	check-manifest --ignore Makefile,Pipfile,Pipfile.lock
 
 sdist:
 	python setup.py sdist

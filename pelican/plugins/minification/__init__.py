@@ -43,6 +43,7 @@ LOGGER = logging.getLogger(__name__)
 
 if version.parse(csscompressor.__version__) <= version.parse("0.9.5"):
     # Monkey patch csscompressor 0.9.5
+    # pylint:disable=protected-access
     _preserve_call_tokens_original = csscompressor._preserve_call_tokens
     _url_re = csscompressor._url_re
 
@@ -77,7 +78,7 @@ class Minification:
         inline_css_min = pelican.settings.get("INLINE_CSS_MIN", True)
         inline_js_min = pelican.settings.get("INLINE_JS_MIN", True)
 
-        for path, subdirs, files in os.walk(pelican.output_path):
+        for path, _, files in os.walk(pelican.output_path):
             for name in files:
                 path_file = os.path.join(path, name)
 
@@ -118,7 +119,7 @@ class Minification:
         soup = BeautifulSoup(content, "html.parser")
 
         # Compression methods according to specific HTML tags
-        tags_methods = dict()
+        tags_methods = {}
         if inline_js_min:
             tags_methods["script"] = jsmin
 
@@ -164,7 +165,7 @@ class Minification:
             raise Exception(
                 "unable to minify file %(file)s, exception was %(exception)r"
                 % {"file": path_file, "exception": e}
-            )
+            ) from e
 
 
 @lru_cache(maxsize=None)
