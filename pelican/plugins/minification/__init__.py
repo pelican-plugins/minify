@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # MIT License
 #
-# Copyright (c) 2014-2022 Alexander Herrmann <darignac@gmail.com>
+# Copyright (c) 2014-2022 Alexander Herrmann <github@torv.rocks>
 # Copyright (c) 2022 Ysard <ysard@users.noreply.github.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
