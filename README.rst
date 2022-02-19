@@ -36,6 +36,19 @@ Then add the plugin to the ``PLUGINS`` setting within your *pelicanconf.py*:
 Upon calling the *pelican* command now, all HTML and CSS files are compressed automatically;
 including inline JavaScript and CSS rules in ``<script>`` and ``<style>`` tags.
 
+To configure the behavior of the plugin, add the following variables in your *pelicanconf.py*
+(here are the default values):
+
+.. code-block:: python
+
+    CSS_MIN = True
+    HTML_MIN = True
+    INLINE_CSS_MIN = True
+    INLINE_JS_MIN = True
+
+Please note that ``INLINE_CSS_MIN`` and ``INLINE_JS_MIN`` require ``HTML_MIN`` be enabled.
+
+
 .. _htmlmin: https://pypi.python.org/pypi/htmlmin
 .. _csscompressor: https://pypi.python.org/pypi/csscompressor
 .. _jsmin: https://pypi.org/project/jsmin

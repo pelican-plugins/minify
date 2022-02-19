@@ -71,11 +71,17 @@ class Minification:
         """
         LOGGER.info("Minification in progress...")
 
+        # Get settings
+        css_min = pelican.settings.get("CSS_MIN", True)
+        html_min = pelican.settings.get("HTML_MIN", True)
+        inline_css_min = pelican.settings.get("INLINE_CSS_MIN", True)
+        inline_js_min = pelican.settings.get("INLINE_JS_MIN", True)
+
         for path, subdirs, files in os.walk(pelican.output_path):
             for name in files:
                 path_file = os.path.join(path, name)
 
-                if fnmatch(name, "*.html"):
+                if html_min and fnmatch(name, "*.html"):
                     self.write_to_file(
                         path_file,
                         lambda content: self.minify_inline_script_style(
@@ -86,24 +92,38 @@ class Minification:
                                 reduce_boolean_attributes=True,
                                 keep_pre=True,
                                 remove_optional_attribute_quotes=False,
-                            )
+                            ),
+                            inline_css_min,
+                            inline_js_min,
                         ),
                     )
-                elif fnmatch(name, "*.css"):
+                elif css_min and fnmatch(name, "*.css"):
                     self.write_to_file(path_file, csscompressor.compress)
 
-    def minify_inline_script_style(self, content):
+    def minify_inline_script_style(self, content, inline_css_min, inline_js_min):
         """Minify inline JavaScript and CSS in HTML content
 
         :param content: HTML data
+        :param inline_css_min: If True, enable the inline CSS minification
+        :param inline_js_min: If True, enable the inline JS minification
         :type content: <str>
+        :type inline_css_min: <boolean>
+        :type inline_js_min: <boolean>
         :return: HTML data with <script> and <style> tags minified
         :rtype: <str>
         """
+        if not inline_css_min and not inline_js_min:
+            return content
+
         soup = BeautifulSoup(content, "html.parser")
 
         # Compression methods according to specific HTML tags
-        tags_methods = {"script": jsmin, "style": csscompressor.compress}
+        tags_methods = dict()
+        if inline_js_min:
+            tags_methods["script"] = jsmin
+
+        if inline_css_min:
+            tags_methods["style"] = csscompressor.compress
 
         content_modified = False
         for tag, method in tags_methods.items():
