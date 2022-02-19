@@ -19,11 +19,6 @@ pytest-runner = "*"
 pytest = ">=5.2.0"
 pytest-cov = ">=2.6.1"
 flake8 = "<4"
-"zest.releaser" = "*"
-wheel = "*"
 check-manifest = "*"
-chardet = "*"
-readme = "*"
-
-[dev-packages.prospector]
-extras = [ "with-pyroma",]
+prospector = "*"
+pyroma = "*"
