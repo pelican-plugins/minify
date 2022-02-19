@@ -1,5 +1,5 @@
-0.2
----
+1.0.0
+-----
 
 * added configuration options: `CSS_MIN`, `HTML_MIN`, `INLINE_CSS_MIN`, `INLINE_JS_MIN`
 * added ability to minify inline JS & CSS
