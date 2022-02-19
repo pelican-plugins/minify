@@ -2,6 +2,7 @@ pelican-minification
 ====================
 
 Content minification for the `Pelican`_ site generator.
+This plugin can compress HTML & CSS files as well as inline CSS and JavaScript in HTML files.
 
 
 Installation and Usage
@@ -9,8 +10,10 @@ Installation and Usage
 
 pelican-minification depends on the following packages that will be installed automatically, see below:
 
-* `htmlmin >= 0.1.5`_
-* `csscompressor >= 0.9.1`_
+* `htmlmin`_
+* `csscompressor`_
+* `jsmin`_
+* `BeautifulSoup`_
 * `Pelican`_
 
 
@@ -21,18 +24,20 @@ Install pelican-minification into your Python interpreter using pip:
     pip install pelican-minification
 
 
-Then add the plugin to the PLUGINS setting within your *pelicanconf.py*:
+Then add the plugin to the ``PLUGINS`` setting within your *pelicanconf.py*:
 
 .. code-block:: python
 
     PLUGINS = [
         ...
-        'minification',
+        'pelican.plugins.minification',
     ]
 
-Upon calling the *pelican* command now, all HTML and CSS files are compressed automatically.
+Upon calling the *pelican* command now, all HTML and CSS files are compressed automatically;
+including inline JavaScript and CSS rules in ``<script>`` and ``<style>`` tags.
 
-
-.. _htmlmin >= 0.1.5: https://pypi.python.org/pypi/htmlmin/0.1.5
-.. _csscompressor >= 0.9.1: https://pypi.python.org/pypi/csscompressor/0.9.3
-.. _Pelican: https://pypi.python.org/pypi/pelican/3.3
+.. _htmlmin: https://pypi.python.org/pypi/htmlmin
+.. _csscompressor: https://pypi.python.org/pypi/csscompressor
+.. _jsmin: https://pypi.org/project/jsmin
+.. _BeautifulSoup: https://pypi.org/project/beautifulsoup4
+.. _Pelican: https://pypi.python.org/pypi/pelican
