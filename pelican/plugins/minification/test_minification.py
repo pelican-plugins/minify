@@ -1,5 +1,5 @@
 import os
-from shutil import copytree, rmtree
+from shutil import copy, rmtree
 from tempfile import mkdtemp
 import unittest
 
@@ -15,25 +15,6 @@ PATH_TEMP_DIR = mkdtemp(prefix="pelicantests.")
 
 
 class TestMinification(unittest.TestCase):
-
-    html = (
-        os.path.join(PATH_TEST_DATA_DIR, "sample.html"),
-        os.path.join(PATH_TEMP_DIR, "sample.html"),
-    )
-    css = (
-        os.path.join(PATH_TEST_DATA_DIR, "styles.css"),
-        os.path.join(PATH_TEMP_DIR, "styles.css"),
-    )
-
-    def setUp(self) -> None:
-        self.settings = get_settings()
-        self.settings["OUTPUT_PATH"] = PATH_TEMP_DIR
-        self.context = get_context(self.settings)
-        copytree(PATH_TEST_DATA_DIR, PATH_TEMP_DIR, dirs_exist_ok=True)
-
-    def tearDown(self) -> None:
-        rmtree(PATH_TEMP_DIR)
-
     def __get_file_content(self, path):
         content = []
         with open(path) as f:
@@ -42,6 +23,25 @@ class TestMinification(unittest.TestCase):
 
     def __load_files(self, paths):
         return (self.__get_file_content(paths[0]), self.__get_file_content(paths[1]))
+
+    def setUp(self) -> None:
+        self.tmp_dir = mkdtemp(prefix="pelicantests.")
+        self.settings = get_settings()
+        self.settings["OUTPUT_PATH"] = self.tmp_dir
+        self.context = get_context(self.settings)
+        self.html = (
+            os.path.join(PATH_TEST_DATA_DIR, "sample.html"),
+            os.path.join(self.tmp_dir, "sample.html"),
+        )
+        self.css = (
+            os.path.join(PATH_TEST_DATA_DIR, "styles.css"),
+            os.path.join(self.tmp_dir, "styles.css"),
+        )
+        copy(self.html[0], self.html[1])
+        copy(self.css[0], self.css[1])
+
+    def tearDown(self) -> None:
+        rmtree(self.tmp_dir)
 
     def test_minify_all(self):
         Minification(Pelican(self.settings))
