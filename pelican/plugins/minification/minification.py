@@ -3,36 +3,13 @@ from functools import lru_cache
 import logging
 import os
 
-from bs4 import BeautifulSoup
-import csscompressor
-import htmlmin
-from jsmin import jsmin
-from packaging import version
+import minify_html
 
 from pelican import signals
 
 __version__ = "1.0.0"
 
 LOGGER = logging.getLogger(__name__)
-
-if version.parse(csscompressor.__version__) <= version.parse("0.9.5"):
-    # Monkey patch csscompressor 0.9.5
-    # pylint:disable=protected-access
-    _preserve_call_tokens_original = csscompressor._preserve_call_tokens
-    _url_re = csscompressor._url_re
-
-    def my_new_preserve_call_tokens(*args, **kwargs):
-        """If regex is for url pattern, switch the keyword remove_ws to False
-
-        Such configuration will preserve svg code in url() pattern of CSS file.
-        """
-        if _url_re == args[1]:
-            kwargs["remove_ws"] = False
-        return _preserve_call_tokens_original(*args, **kwargs)
-
-    csscompressor._preserve_call_tokens = my_new_preserve_call_tokens
-
-    assert csscompressor._preserve_call_tokens == my_new_preserve_call_tokens
 
 
 class Minification:
@@ -47,77 +24,47 @@ class Minification:
         LOGGER.info("Minification in progress...")
 
         # Get settings
-        css_min = pelican.settings.get("CSS_MIN", True)
-        html_min = pelican.settings.get("HTML_MIN", True)
-        inline_css_min = pelican.settings.get("INLINE_CSS_MIN", True)
-        inline_js_min = pelican.settings.get("INLINE_JS_MIN", True)
+        minify_css = pelican.settings.get("CSS_MIN", True)
+        minify_html = pelican.settings.get("HTML_MIN", True)
+        minify_js = pelican.settings.get("JS_MIN", True)
+        minify_inline_css = pelican.settings.get("INLINE_CSS_MIN", True)
+        minify_inline_js = pelican.settings.get("INLINE_JS_MIN", True)
 
         for path, _, files in os.walk(pelican.output_path):
             for name in files:
                 path_file = os.path.join(path, name)
 
-                if html_min and fnmatch(name, "*.html"):
+                is_html = fnmatch(name, "*.html")
+                is_css = fnmatch(name, "*.css")
+                is_js = fnmatch(name, "*.js")
+
+                if is_html and minify_html:
                     self.write_to_file(
                         path_file,
-                        lambda content: self.minify_inline_script_style(
-                            htmlmin.minify(
-                                content,
-                                remove_comments=True,
-                                remove_empty_space=True,
-                                reduce_boolean_attributes=True,
-                                keep_pre=True,
-                                remove_optional_attribute_quotes=False,
-                            ),
-                            inline_css_min,
-                            inline_js_min,
+                        lambda content: self.minify(
+                            content, minify_inline_css, minify_inline_js
                         ),
                     )
-                elif css_min and fnmatch(name, "*.css"):
-                    self.write_to_file(path_file, csscompressor.compress)
 
-    def minify_inline_script_style(self, content, inline_css_min, inline_js_min):
-        """Minify inline JavaScript and CSS in HTML content
+                if is_css and minify_css:
+                    self.write_to_file(
+                        path_file,
+                        lambda content: self.minify(content, True, False),
+                    )
 
-        :param content: HTML data
-        :param inline_css_min: If True, enable the inline CSS minification
-        :param inline_js_min: If True, enable the inline JS minification
-        :type content: <str>
-        :type inline_css_min: <boolean>
-        :type inline_js_min: <boolean>
-        :return: HTML data with <script> and <style> tags minified
-        :rtype: <str>
-        """
-        if not inline_css_min and not inline_js_min:
-            return content
+                if is_js and minify_js:
+                    self.write_to_file(
+                        path_file, lambda content: self.minify(content, False, True)
+                    )
 
-        soup = BeautifulSoup(content, "html.parser")
-
-        # Compression methods according to specific HTML tags
-        tags_methods = {}
-        if inline_js_min:
-            tags_methods["script"] = jsmin
-
-        if inline_css_min:
-            tags_methods["style"] = csscompressor.compress
-
-        content_modified = False
-        for tag, method in tags_methods.items():
-
-            found_tags = soup.find_all(tag)
-            if not found_tags:
-                continue
-
-            for found_tag in found_tags:
-                # Exclude empty tags
-                if not found_tag.string:
-                    continue
-                content_modified = True
-                found_tag.string.replace_with(
-                    minification_method(method, found_tag.string)
-                )
-
-        # Return content as is if there have been no changes
-        return str(soup) if content_modified else content
+    def minify(self, content, minify_css, minify_js):
+        return minify_html.minify(
+            content,
+            do_not_minify_doctype=True,
+            keep_spaces_between_attributes=True,
+            minify_css=minify_css,
+            minify_js=minify_js,
+        )
 
     @staticmethod
     def write_to_file(path_file, callback):

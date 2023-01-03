@@ -1,5 +1,5 @@
 function whatever(someVariable) {
-    if (someVariable === 'test') {
+    if (someVariable === "test") {
         return true;
     }
     return false;

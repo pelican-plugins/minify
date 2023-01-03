@@ -1,18 +1,20 @@
-1.0.0
------
+# TBA
 
-* added configuration options: `CSS_MIN`, `HTML_MIN`, `INLINE_CSS_MIN`, `INLINE_JS_MIN`
-* added ability to minify inline JS & CSS
-* refactored for Pelican 4.x
-* dropped Python 2.7 support
-* fixed CSS minification fail on embedded SVG in CSS rules (`url()` func)
+-   added configuration option: `JS_MIN` and capability to minify Javascript files
+-   changed to usage of `minify_html` for whole minification
 
-0.1.1
------
+# 1.0.0
 
-* disabled stripping of HTML attribute quotes
+-   added configuration options: `CSS_MIN`, `HTML_MIN`, `INLINE_CSS_MIN`, `INLINE_JS_MIN`
+-   added ability to minify inline JS & CSS
+-   refactored for Pelican 4.x
+-   dropped Python 2.7 support
+-   fixed CSS minification fail on embedded SVG in CSS rules (`url()` func)
 
-0.1.0
------
+# 0.1.1
 
-* initial release
+-   disabled stripping of HTML attribute quotes
+
+# 0.1.0
+
+-   initial release
