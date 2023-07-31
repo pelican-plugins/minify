@@ -7,8 +7,6 @@ import minify_html
 
 from pelican import signals
 
-__version__ = "1.0.0"
-
 LOGGER = logging.getLogger(__name__)
 
 
