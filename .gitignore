@@ -55,4 +55,6 @@ docs/_build/
 # project specific
 .idea/
 
-poetry.lock
+# PDM
+.pdm-python
+pdm.lock

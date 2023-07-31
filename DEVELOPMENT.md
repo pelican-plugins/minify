@@ -5,12 +5,11 @@
 Install prerequisites:
 
 ```
-python3 -m pip install poetry pre-commit
-pre-commit install
-poetry install
+python3 -m pip install invoke
+invoke setup
 ```
 
 ## Commands
 
--   `poetry run invoke tests`
--   `poetry run invoke lint --diff`
+-   `pdm run invoke tests`
+-   `pdm run invoke lint --diff`
