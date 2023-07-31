@@ -1,1 +1,1 @@
-from .minify import *  # NOQA
+from .minify import *  # NOQA: F403

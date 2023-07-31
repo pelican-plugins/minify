@@ -4,7 +4,6 @@ from tempfile import mkdtemp
 import unittest
 
 from minify import Minify
-
 from pelican import Pelican
 from pelican.tests.support import get_context, get_settings
 
@@ -15,6 +14,8 @@ PATH_TEMP_DIR = mkdtemp(prefix="pelicantests.")
 
 
 class TestMinify(unittest.TestCase):
+    """Test class for the Minify plugin."""
+
     def __get_file_content(self, path):
         content = []
         with open(path) as f:

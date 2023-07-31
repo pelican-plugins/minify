@@ -13,10 +13,10 @@ LOGGER = logging.getLogger(__name__)
 
 
 class Minify:
-    """File content minification"""
+    """Minify file content."""
 
     def __init__(self, pelican):
-        """Minifies the files
+        """Minify the files.
 
         :param pelican: the pelican object
         :type pelican: pelican.Pelican
@@ -68,8 +68,10 @@ class Minify:
 
     @staticmethod
     def write_to_file(path_file, callback):
-        """Read the content of the given file, put the content into the callback
-        and writes the result back to the file.
+        """Write the file to disk.
+
+        Read the content of the given file, put the content into the callback,
+        and write the result back to the file.
 
         :param path_file: the path to the file
         :type path_file: str
@@ -82,16 +84,15 @@ class Minify:
                 f.seek(0)
                 f.write(content)
                 f.truncate()
-        except Exception as e:
-            raise Exception(
-                "unable to minify file %(file)s, exception was %(exception)r"
-                % {"file": path_file, "exception": e}
+        except Exception as e:  # NOQA: BLE001
+            raise Exception(  # NOQA: TRY002, TRY003
+                f"Unable to minify file {path_file}. Exception was: {e!r}"
             ) from e
 
 
 @lru_cache(maxsize=None)
 def minify_method(method, content):
-    """Cached wrapper for minify method
+    """Wrap the minify method with a cached version.
 
     Some JavaScript or CSS tags may be similar from page to page;
     so caching the return of this function can speed up the minification process.
@@ -105,5 +106,5 @@ def minify_method(method, content):
 
 
 def register():
-    """Register the plugin after the content was generated"""
+    """Register the plugin after the content was generated."""
     signals.finalized.connect(Minify)
