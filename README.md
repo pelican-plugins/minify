@@ -7,6 +7,15 @@ Minify: A Plugin for Pelican
 
 This Pelican plugin can compress HTML & CSS files as well as inline CSS and JavaScript in HTML files.
 
+Requirements
+------------
+
+Because this plugin depends on the [`minify_html`](https://pypi.org/project/minify-html) Python package, which in turn utilizes the Rust-based [minify-html](https://github.com/wilsonzlin/minify-html) project, you must have Cargo (the Rust package manager) installed and available on your `PATH`. Rust and Cargo can be installed on Mac systems via Homebrew:
+
+    brew install rust
+
+Alternatively, Rust and Cargo can be installed via your particular system’s package manager or via: <https://rustup.rs/>
+
 Installation
 ------------
 
@@ -14,21 +23,23 @@ This plugin can be installed via:
 
     python -m pip install pelican-minify
 
+As long as you have not explicitly added a `PLUGINS` setting to your Pelican settings file, then the newly-installed plugin should be automatically detected and enabled. Otherwise, you must add `minify` to your existing `PLUGINS` list. For more information, please see the [How to Use Plugins](https://docs.getpelican.com/en/latest/plugins.html#how-to-use-plugins) documentation.
+
 Usage
 -----
 
-By default, all HTML and CSS files will be conpressed, including inline JavaScript and CSS rules in `<script>` and `<style>` tags.
+By default, all HTML and CSS files will be compressed, including inline JavaScript and CSS rules in `<script>` and `<style>` tags.
 
-To configure the behavior of the plugin, add the following variables in your pelicanconf.py* (here are the default values):
+To configure the behavior of the plugin, add the following variables in your Pelican settings file (values shown here are the default values):
 
-```
+```python
 CSS_MIN = True
 HTML_MIN = True
 INLINE_CSS_MIN = True
 INLINE_JS_MIN = True
 ```
 
-Please note that ``INLINE_CSS_MIN`` and ``INLINE_JS_MIN`` require ``HTML_MIN`` be enabled.
+Please note that `INLINE_CSS_MIN` and `INLINE_JS_MIN` require that `HTML_MIN` be enabled.
 
 Contributing
 ------------
