@@ -1,1 +1,1 @@
-from .minification import *  # NOQA
+from .minify import *  # NOQA

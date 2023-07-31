@@ -3,7 +3,7 @@ from shutil import copy, rmtree
 from tempfile import mkdtemp
 import unittest
 
-from minification import Minification
+from minify import Minify
 
 from pelican import Pelican
 from pelican.tests.support import get_context, get_settings
@@ -14,7 +14,7 @@ PATH_TEST_DATA_DIR = os.path.join(PATH_CURRENT_DIR, "test_data")
 PATH_TEMP_DIR = mkdtemp(prefix="pelicantests.")
 
 
-class TestMinification(unittest.TestCase):
+class TestMinify(unittest.TestCase):
     def __get_file_content(self, path):
         content = []
         with open(path) as f:
@@ -56,7 +56,7 @@ class TestMinification(unittest.TestCase):
         )
 
     def test_minify_all(self):
-        Minification(Pelican(self.settings))
+        Minify(Pelican(self.settings))
 
         html, css, js = self.get_files()
 
@@ -70,7 +70,7 @@ class TestMinification(unittest.TestCase):
     def test_minify_html_only(self):
         self.settings["CSS_MIN"] = False
         self.settings["JS_MIN"] = False
-        Minification(Pelican(self.settings))
+        Minify(Pelican(self.settings))
 
         html, css, js = self.get_files()
 
@@ -82,7 +82,7 @@ class TestMinification(unittest.TestCase):
     def test_minify_css_only(self):
         self.settings["HTML_MIN"] = False
         self.settings["JS_MIN"] = False
-        Minification(Pelican(self.settings))
+        Minify(Pelican(self.settings))
 
         html, css, js = self.get_files()
 
@@ -94,7 +94,7 @@ class TestMinification(unittest.TestCase):
     def test_minify_js_only(self):
         self.settings["HTML_MIN"] = False
         self.settings["CSS_MIN"] = False
-        Minification(Pelican(self.settings))
+        Minify(Pelican(self.settings))
 
         html, css, js = self.get_files()
 
@@ -105,14 +105,14 @@ class TestMinification(unittest.TestCase):
 
     def test_minify_no_inline_css(self):
         self.settings["INLINE_CSS_MIN"] = False
-        Minification(Pelican(self.settings))
+        Minify(Pelican(self.settings))
 
         html = self.__load_files(self.html)
         self.assertTrue("yellow;\n" in html[1])
 
     def test_minify_no_inline_js(self):
         self.settings["INLINE_JS_MIN"] = False
-        Minification(Pelican(self.settings))
+        Minify(Pelican(self.settings))
 
         html = self.__load_files(self.html)
         self.assertTrue(".trim();\n" in html[1])

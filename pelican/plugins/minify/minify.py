@@ -12,7 +12,7 @@ __version__ = "1.0.0"
 LOGGER = logging.getLogger(__name__)
 
 
-class Minification:
+class Minify:
     """File content minification"""
 
     def __init__(self, pelican):
@@ -106,4 +106,4 @@ def minification_method(method, content):
 
 def register():
     """Register the plugin after the content was generated"""
-    signals.finalized.connect(Minification)
+    signals.finalized.connect(Minify)
