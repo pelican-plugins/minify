@@ -6,7 +6,7 @@ import sys
 
 from invoke import task
 
-PKG_NAME = "minification"
+PKG_NAME = "minify"
 PKG_PATH = Path(f"pelican/plugins/{PKG_NAME}")
 TOOLS = ("poetry", "pre-commit")
 

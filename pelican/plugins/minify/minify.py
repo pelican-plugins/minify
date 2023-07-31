@@ -90,8 +90,8 @@ class Minify:
 
 
 @lru_cache(maxsize=None)
-def minification_method(method, content):
-    """Cached wrapper for minification method
+def minify_method(method, content):
+    """Cached wrapper for minify method
 
     Some JavaScript or CSS tags may be similar from page to page;
     so caching the return of this function can speed up the minification process.

@@ -1,9 +1,9 @@
-pelican-minification: A Plugin for Pelican
-====================================================
+Minify: A Plugin for Pelican
+============================
 
-[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/pelican-minification/build)](https://github.com/pelican-plugins/pelican-minification/actions)
-[![PyPI Version](https://img.shields.io/pypi/v/pelican-minification)](https://pypi.org/project/pelican-minification/)
-![License](https://img.shields.io/pypi/l/pelican-minification?color=blue)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/pelican-plugins/minify/main.yml?branch=main)](https://github.com/pelican-plugins/minify/actions)
+[![PyPI Version](https://img.shields.io/pypi/v/pelican-minify)](https://pypi.org/project/pelican-minify/)
+![License](https://img.shields.io/pypi/l/pelican-minify?color=blue)
 
 This Pelican plugin can compress HTML & CSS files as well as inline CSS and JavaScript in HTML files.
 
@@ -12,7 +12,7 @@ Installation
 
 This plugin can be installed via:
 
-    python -m pip install pelican-minification
+    python -m pip install pelican-minify
 
 Usage
 -----
@@ -37,7 +37,7 @@ Contributions are welcome and much appreciated. Every little bit helps. You can 
 
 To start contributing to this plugin, review the [Contributing to Pelican][] documentation, beginning with the **Contributing Code** section.
 
-[existing issues]: https://github.com/pelican-plugins/pelican-minification/issues
+[existing issues]: https://github.com/pelican-plugins/minify/issues
 [Contributing to Pelican]: https://docs.getpelican.com/en/latest/contribute.html
 
 License

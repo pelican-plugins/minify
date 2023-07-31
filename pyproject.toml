@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pelican-minification"
+name = "pelican-minify"
 version = "1.0.0"
 description = "Pelican plugin to minify HTML, CSS and Javascript"
 authors = [
@@ -17,7 +17,7 @@ keywords = [
     "css",
     "javascript",
 ]
-repository = "https://github.com/pelican-plugins/pelican-minification"
+repository = "https://github.com/pelican-plugins/minify"
 documentation = "https://docs.getpelican.com"
 packages = [{ include = "pelican" }]
 
@@ -34,7 +34,7 @@ classifiers = [
 
 [tool.poetry.urls]
 "Funding" = "https://donate.getpelican.com/"
-"Issue Tracker" = "https://github.com/pelican-plugins/pelican-minification/issues"
+"Issue Tracker" = "https://github.com/pelican-plugins/pelican-minify/issues"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
@@ -60,7 +60,7 @@ Werkzeug = "^2.2"
 markdown = ["markdown"]
 
 [tool.autopub]
-project-name = "pelican-minification"
+project-name = "Minify"
 git-username = "botpub"
 git-email = "botpub@autopub.rocks"
 append-github-contributor = true
