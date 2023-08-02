@@ -1,0 +1,110 @@
+[project]
+name = "pelican-minify"
+version = "1.0.0"
+description = "Pelican plugin to minify HTML, CSS and Javascript"
+authors = [
+    {name = "Alexander Herrmann", email = "106409+dArignac@users.noreply.github.com"},
+    {name = "Justin Mayer", email = "entroP@gmail.com"},
+    {name = "Ysard", email = "ysard@users.noreply.github.com"},
+]
+keywords = [
+    "pelican",
+    "plugin",
+    "minify",
+    "minification",
+    "html",
+    "css",
+    "javascript",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Framework :: Pelican",
+    "Framework :: Pelican :: Plugins",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8.1,<4.0"
+dependencies = [
+    "pelican>=4.5",
+    "minify_html>=0.10.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/pelican-plugins/minify"
+"Issue Tracker" = "https://github.com/pelican-plugins/minify/issues"
+"Funding" = "https://donate.getpelican.com/"
+
+[project.optional-dependencies]
+markdown = ["markdown>=3.4"]
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "black>=23.7.0",
+    "invoke>=2.2.0",
+    "ruff>=0.0.280",
+]
+test = [
+    "markdown>=3.4",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-sugar>=0.9.7",
+]
+
+[tool.autopub]
+project-name = "Minify"
+git-username = "botpub"
+git-email = "52496925+botpub@users.noreply.github.com"
+append-github-contributor = true
+
+[tool.ruff]
+select = [
+  "B",   # flake8-bugbear
+  "BLE", # flake8-blind-except
+  "C4",  # flake8-comprehensions
+  "D",   # pydocstyle
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "I",   # isort
+  "ICN", # flake8-import-conventions
+  "ISC", # flake8-implicit-str-concat
+  "PGH", # pygrep-hooks
+  "PL",  # pylint
+  "RET", # flake8-return
+  "RUF", # ruff-specific rules
+  "SIM", # flake8-simplify
+  "T10", # flake8-debugger
+  "T20", # flake8-print
+  "TID", # flake8-tidy-imports
+  "TRY", # tryceratops
+  "UP",  # pyupgrade
+  "W",   # pycodestyle
+  "YTT", # flake8-2020
+]
+
+ignore = [
+  "D100",    # missing docstring in public module
+  "D102",    # missing docstring in public method
+  "D104",    # missing docstring in public package
+  "D203",    # blank line before class docstring
+  "D213",    # multi-line docstring summary should start at the second line
+]
+
+target-version = "py38"
+
+[tool.ruff.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = ["pelican"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
