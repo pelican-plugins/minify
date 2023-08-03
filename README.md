@@ -10,7 +10,7 @@ This Pelican plugin can compress HTML & CSS files as well as inline CSS and Java
 Requirements
 ------------
 
-Because this plugin depends on the [`minify_html`](https://pypi.org/project/minify-html) Python package, which in turn utilizes the Rust-based [minify-html](https://github.com/wilsonzlin/minify-html) project, you must have Cargo (the Rust package manager) installed and available on your `PATH`. Rust and Cargo can be installed on Mac systems via Homebrew:
+Because this plugin depends on the [`minify-html`](https://pypi.org/project/minify-html) Python package, which in turn utilizes the Rust-based [`minify-html`](https://github.com/wilsonzlin/minify-html) project, you must have Cargo (the Rust package manager) installed and available on your `PATH`. Rust and Cargo can be installed on Mac systems via Homebrew:
 
     brew install rust
 

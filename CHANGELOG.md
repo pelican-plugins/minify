@@ -1,12 +1,6 @@
 CHANGELOG
 =========
 
-TBA
-------------------
-
-- Add `JS_MIN` setting and ability to minify JavaScript files
-- Replace all minifiers with `minify_html`
-
 1.0.0 - 2022-02-19
 ------------------
 
