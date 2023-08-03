@@ -16,6 +16,8 @@ keywords = [
     "css",
     "javascript",
 ]
+readme = "README.md"
+license = {text = "MIT"}
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
