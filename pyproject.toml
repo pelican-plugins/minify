@@ -107,9 +107,6 @@ combine-as-imports = true
 force-sort-within-sections = true
 known-first-party = ["pelican"]
 
-[tool.hatch.build.targets.wheel]
-packages = ["pelican"]
-
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
