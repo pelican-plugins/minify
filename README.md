@@ -34,6 +34,7 @@ To configure the behavior of the plugin, add the following variables in your Pel
 
 ```python
 CSS_MIN = True
+JS_MIN = True
 HTML_MIN = True
 INLINE_CSS_MIN = True
 INLINE_JS_MIN = True
