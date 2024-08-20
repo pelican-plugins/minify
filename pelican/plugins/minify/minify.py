@@ -82,7 +82,7 @@ class Minify:
                 f.seek(0)
                 f.write(content)
                 f.truncate()
-        except Exception as e:  # NOQA: BLE001
+        except Exception as e:
             raise Exception(  # NOQA: TRY002, TRY003
                 f"Unable to minify file {path_file}. Exception was: {e!r}"
             ) from e

@@ -54,15 +54,14 @@ markdown = ["markdown>=3.4"]
 
 [tool.pdm.dev-dependencies]
 lint = [
-    "black>=23.7.0",
-    "invoke>=2.2.0",
-    "ruff>=0.1.8",
+    "invoke>=2.2",
+    "ruff>=0.6.0,<0.7.0",
 ]
 test = [
     "markdown>=3.4",
     "pytest>=7.0",
     "pytest-cov>=4.0",
-    "pytest-sugar>=0.9.7",
+    "pytest-sugar>=1.0",
 ]
 
 [tool.pdm.build]
@@ -80,7 +79,7 @@ git-username = "botpub"
 git-email = "52496925+botpub@users.noreply.github.com"
 append-github-contributor = true
 
-[tool.ruff]
+[tool.ruff.lint]
 select = [
   "B",   # flake8-bugbear
   "BLE", # flake8-blind-except
@@ -111,9 +110,10 @@ ignore = [
   "D104",    # missing docstring in public package
   "D203",    # blank line before class docstring
   "D213",    # multi-line docstring summary should start at the second line
+  "ISC001",  # disabled so `ruff format` works without warning
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 combine-as-imports = true
 force-sort-within-sections = true
 known-first-party = ["pelican"]
