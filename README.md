@@ -3,6 +3,7 @@ Minify: A Plugin for Pelican
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/pelican-plugins/minify/main.yml?branch=main)](https://github.com/pelican-plugins/minify/actions)
 [![PyPI Version](https://img.shields.io/pypi/v/pelican-minify)](https://pypi.org/project/pelican-minify/)
+[![Downloads](https://img.shields.io/pypi/dm/pelican-minify)](https://pypi.org/project/pelican-minify/)
 ![License](https://img.shields.io/pypi/l/pelican-minify?color=blue)
 
 This Pelican plugin can compress HTML & CSS files as well as inline CSS and JavaScript in HTML files.
