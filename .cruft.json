@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/getpelican/cookiecutter-pelican-plugin",
+  "commit": "94970ab900aed538f451686a2eb51188dbfd1a28",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "plugin_name": "Minify",
+      "repo_name": "minify",
+      "package_name": "minify",
+      "distribution_name": "pelican-minify",
+      "version": "2.0.0",
+      "description": "Pelican plugin to minify HTML, CSS and Javascript",
+      "authors": "[{name = \"Alexander Herrmann\", email = \"106409+dArignac@users.noreply.github.com\"}, {name = \"Justin Mayer\", email = \"entroP@gmail.com\"}, {name = \"Ysard\", email = \"ysard@users.noreply.github.com\"},]",
+      "keywords": "\"pelican\", \"plugin\", \"minify\", \"minification\", \"html\", \"css\", \"javascript\"",
+      "readme": "README.md",
+      "contributing": "CONTRIBUTING.md",
+      "license": "MIT License|MIT",
+      "repo_url": "https://github.com/pelican-plugins/minify",
+      "dev_status": "5 - Production/Stable",
+      "tests_exist": true,
+      "python_version": ">=3.8.1,<4.0",
+      "pelican_version": ">=4.5",
+      "_template": "https://github.com/getpelican/cookiecutter-pelican-plugin"
+    }
+  },
+  "directory": null
+}
