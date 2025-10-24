@@ -6,6 +6,7 @@ authors = [
     {name = "Alexander Herrmann", email = "106409+dArignac@users.noreply.github.com"},
     {name = "Justin Mayer", email = "entroP@gmail.com"},
     {name = "Ysard", email = "ysard@users.noreply.github.com"},
+    {name = "Paolo Melchiorre", email = "paolo@melchiorre.org"},
 ]
 keywords = [
     "pelican",
@@ -38,7 +39,7 @@ classifiers = [
 requires-python = ">=3.8.1,<4.0"
 dependencies = [
     "pelican>=4.5",
-    "minify_html>=0.10.8",
+    "minify_html>=0.17.1",
 ]
 
 [project.urls]
