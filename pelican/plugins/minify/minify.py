@@ -58,8 +58,6 @@ class Minify:
     def minify(self, content, minify_css, minify_js):
         return minify_html.minify(
             content,
-            do_not_minify_doctype=True,
-            keep_spaces_between_attributes=True,
             minify_css=minify_css,
             minify_js=minify_js,
         )
