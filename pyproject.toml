@@ -28,11 +28,11 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -43,21 +43,21 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/pelican-plugins/minify"
+"Homepage" = "https://github.com/pelican-plugins/minify"
 "Issue Tracker" = "https://github.com/pelican-plugins/minify/issues"
-Funding = "https://donate.getpelican.com/"
+"Changelog" = "https://github.com/pelican-plugins/minify/blob/main/CHANGELOG.md"
+"Funding" = "https://donate.getpelican.com/"
 
 [project.optional-dependencies]
 markdown = ["markdown>=3.4"]
 
-[tool.pdm]
-
-[tool.pdm.dev-dependencies]
+[dependency-groups]
 lint = [
     "invoke>=2.2",
-    "ruff>=0.6.0,<0.7.0",
+    "ruff>=0.14.2,<1.0.0",
 ]
 test = [
+    "invoke>=2.2",
     "markdown>=3.4",
     "pytest>=7.0",
     "pytest-cov>=4.0",
