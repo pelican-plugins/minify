@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+2.0.1 - 2025-10-31
+------------------
+
+- Fix compatibility with minify-html 0.17.1 and newer
+- Add Python 3.13 & 3.14 and drop Python 3.8 & 3.9
+
+Contributed by [Paolo Melchiorre](https://github.com/pauloxnet) via [PR #7](https://github.com/pelican-plugins/minify/pull/7/)
+
+
 2.0.0 - 2023-08-03
 ------------------
 

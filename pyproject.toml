@@ -1,6 +1,6 @@
 [project]
 name = "pelican-minify"
-version = "2.0.0"
+version = "2.0.1"
 description = "Pelican plugin to minify HTML, CSS and Javascript"
 authors = [
     {name = "Alexander Herrmann", email = "106409+dArignac@users.noreply.github.com"},
