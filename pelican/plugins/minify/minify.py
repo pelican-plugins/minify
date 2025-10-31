@@ -1,5 +1,5 @@
 from fnmatch import fnmatch
-from functools import lru_cache
+from functools import cache
 import logging
 import os
 
@@ -86,7 +86,7 @@ class Minify:
             ) from e
 
 
-@lru_cache(maxsize=None)
+@cache
 def minify_method(method, content):
     """Wrap the minify method with a cached version.
 
