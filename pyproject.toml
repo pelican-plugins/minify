@@ -71,7 +71,7 @@ source-includes = [
     "DEVELOPMENT.md",
 ]
 includes = ["pelican/"]
-excludes = ["**/.DS_Store", "**/test_data/**", "tasks.py"]
+excludes = ["**/.DS_Store"]
 
 [tool.autopub]
 project-name = "Minify"
