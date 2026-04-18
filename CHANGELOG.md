@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.0.2 - 2026-04-18
+------------------
+
+Include test data in source distribution
+
 2.0.1 - 2025-10-31
 ------------------
 
